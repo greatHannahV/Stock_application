@@ -1,0 +1,33 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Components/TableHeader" />
+
+# TableHeader Component
+
+The `TableHeader` component is responsible for rendering the header row of a table that displays stock data. This component is designed to be flexible and customizable, allowing you to define the headers based on the data being shown. It is typically used in financial applications where columns represent different stock metrics, such as "Previous Close," "Last," "Change," etc.
+
+## Purpose
+
+The `TableHeader` component is crucial for organizing and structuring tabular data, providing a clear and consistent way to label the columns. It enhances the user experience by making the table more readable and easier to navigate.
+
+## Setup and Requirements
+
+This component requires a `tableHeaders` prop, which is an object containing the labels for the various columns in the table. The `tableHeaders` prop should be passed as an object with the following keys:
+
+- `shortName`
+- `regularMarketPreviousClose`
+- `regularMarketPrice`
+- `regularMarketChangePercent`
+- `regularMarketChange`
+- `regularMarketTime`
+- `symbol`
+
+## Usage in Storybook
+
+This Storybook implementation showcases the `TableHeader` component with predefined column headers used in stock data tables.
+
+### Stories Overview
+
+#### Default
+
+The `Default` story shows the `TableHeader` component with predefined headers for displaying stock data, including columns for the stock name, previous close, last price, change percent, and more.

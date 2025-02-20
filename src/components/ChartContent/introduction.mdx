@@ -1,0 +1,23 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Components/ChartContent" />
+
+# ChartContent Component
+
+The `ChartContent` component is responsible for displaying detailed chart information for a selected company, including historical stock data such as price, volume, and other indicators. It integrates with different charting libraries and offers a flexible display based on the data passed as props.
+
+## Usage
+
+The `ChartContent` component accepts the following props:
+
+- `selectedCompany`: A data object containing the company details and stock information, which should include charts, meta information, and processed data.
+
+### Example
+
+Below is an example of how to use the `ChartContent` component in your Storybook setup:
+
+```tsx
+import { BIG_CHART_DATA_MOCK } from "../../stories/_mock_/chart-data";
+
+<ChartContent selectedCompany={BIG_CHART_DATA_MOCK} />;
+```

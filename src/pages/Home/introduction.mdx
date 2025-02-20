@@ -1,0 +1,15 @@
+import { Meta, Story } from "@storybook/addon-docs/blocks";
+import * as HomeStories from "./Home.stories";
+
+<Meta title="Pages/Home" />
+
+# Home Page
+
+The **Home Page** component is the primary view of the stock market application. It displays stock data in a table format, as well as additional sections for showing the biggest gainers and losers in the market. This page integrates with the backend to fetch real-time stock data, handle loading states, and display any error messages when necessary.
+
+### Features:
+
+- **Stock Data Table**: Displays essential stock information such as symbol, market price, previous close, and market change.
+- **Biggest Gainers and Losers Tables**: Two separate tables that highlight the top gainers and losers from the stock market.
+- **Error Handling**: If an error occurs during data fetching, the component will display an appropriate error message to the user.
+- **Refetching Mechanism**: Users can refresh the stock data using a refetch button.

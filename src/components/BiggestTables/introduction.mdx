@@ -1,0 +1,28 @@
+import { Meta, Story } from "@storybook/addon-docs/blocks";
+import * as BiggestTablesStories from "./BiggestTables.stories";
+
+<Meta title="Components/BiggestTables" />
+
+# BiggestTables Component
+
+The **BiggestTables** component is designed to showcase two key tables in the stock market application: the biggest gainers and biggest losers. It displays a list of stocks sorted by market performance, helping users quickly identify the top-performing and worst-performing stocks. The component handles both the loading state and displays the stocks dynamically.
+
+### Features:
+
+- **Biggest Gainers and Losers**: Displays two separate tables for the biggest gainers and losers, showing real-time market performance.
+- **Loading State**: A loading indicator is displayed while the data is being fetched or processed.
+- **Dynamic Data**: The component accepts stock data as props and renders the respective tables accordingly.
+
+## Stories
+
+### Default View
+
+This story shows the `BiggestTables` component in its default state, where stock data is loaded successfully and displayed in the tables.
+
+```ts
+export const Default = Template.bind({});
+Default.args = {
+  isLoading: false,
+  stocks: mockStocks,
+};
+```

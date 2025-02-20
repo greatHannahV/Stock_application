@@ -1,0 +1,24 @@
+import { Meta, Story } from "@storybook/addon-docs/blocks";
+import * as WatchlistStories from "./Watchlist.stories";
+
+<Meta title="Pages/Watchlist" />
+
+# Watchlist Component
+
+The **Watchlist** component allows users to track a list of stocks they are interested in. The component displays key information for each stock, such as the ticker symbol, current price, and market change. The watchlist can be updated dynamically as users add or remove stocks.
+
+### Features:
+
+- **Stock Information**: Displays relevant stock details such as symbol, price, and market performance.
+- **Dynamic Updates**: Allows users to add or remove stocks from their watchlist.
+
+## Stories
+
+### Default Watchlist
+
+This story shows the basic behavior of the `Watchlist` component without any customization. It represents the default view where the user can see a list of stocks they are watching.
+
+```ts
+const Template: StoryFn = () => <Watchlist />;
+export const Default = Template.bind({});
+```

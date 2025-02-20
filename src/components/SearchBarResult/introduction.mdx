@@ -1,0 +1,38 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Components/SearchBarResult" />
+
+# SearchBarResult Component
+
+The `SearchBarResult` component is a responsive and dynamic search results display tailored for applications that handle stock data. This component supports multiple scenarios, such as displaying matching results, showing no results, or highlighting booked stocks.
+
+## Setup and Requirements
+
+The `SearchBarResult` component utilizes the `withProviders` decorator to ensure that all necessary contexts and configurations are applied consistently.
+
+### Decorator: `withProviders`
+
+The `withProviders` decorator sets up essential providers, including:
+
+- **Global Context**: Ensures access to shared state and configurations.
+- **Custom Dependencies**: Handles any additional setup required by the component.
+
+## Usage in Storybook
+
+This Storybook implementation showcases three primary use cases for the `SearchBarResult` component:
+
+### Stories Overview
+
+#### WithSearchTerm
+
+The `WithSearchTerm` story displays search results for a given search term.
+
+```tsx
+export const WithSearchTerm: StoryObj<typeof SearchBarResult> = {
+  args: {
+    search: "Apple",
+    stocks: mockStocks,
+    bookedStocks: [],
+  },
+};
+```

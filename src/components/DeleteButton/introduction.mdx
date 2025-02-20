@@ -1,0 +1,28 @@
+import { Meta, Story } from "@storybook/addon-docs/blocks";
+import * as DeleteButtonStories from "./DeleteButton.stories";
+
+<Meta title="Components/DeleteButton" />
+
+# DeleteButton Component
+
+The **DeleteButton** component is a simple button used to trigger the deletion of a stock from a user's watchlist or portfolio. It allows users to remove a stock by clicking on the button, providing immediate feedback by calling an action on the click event. This component is particularly useful when managing stock data in an interactive application.
+
+### Features:
+
+- **Stock Removal**: The button triggers the removal of a stock when clicked.
+- **Action Feedback**: When the button is clicked, it fires an event that can be captured to trigger further actions, like removing the stock from the UI.
+- **Customizable Props**: You can pass in a stock object to customize the button’s context, such as showing the stock's name or symbol.
+
+## Stories
+
+### Default View
+
+This story showcases the `DeleteButton` component in its default state. When clicked, the button simulates the deletion of a stock by triggering an action.
+
+```ts
+export const Default = Template.bind({});
+Default.args = {
+  stock: mockStock,
+  onClick: action("Delete button clicked"),
+};
+```

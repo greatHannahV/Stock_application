@@ -1,0 +1,20 @@
+import { Meta, Story } from "@storybook/addon-docs/blocks";
+import * as ChartStories from "./Chart.stories";
+
+<Meta title="Pages/Chart" />
+
+# Chart Component
+
+The **Chart** component visualizes stock data in a graphical format. It fetches the chart data for a specific stock ticker and renders it, displaying details such as opening, closing, high, and low prices over time. This component is key in providing users with visual insights into stock price trends.
+
+### Features:
+
+- **Chart Visualization**: Displays stock price data over time in a graphical format.
+- **Error Handling**: If an error occurs while fetching the stock data, the component will handle the error gracefully and display an appropriate message to the user.
+- **Data Fetching**: Fetches stock data using an external API (mocked in this case for testing purposes).
+
+## Stories
+
+### Mocked Success Story
+
+This story simulates the successful scenario where stock chart data is fetched and displayed for a specific stock ticker (e.g., `AAPL`). The data fetching is mocked using MSW to return predefined mock data (`BIG_CHART_DATA_MOCK`).

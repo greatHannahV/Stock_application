@@ -1,0 +1,28 @@
+import { Meta, Story } from "@storybook/addon-docs/blocks";
+import * as ButtonsControllerStories from "./ButtonsController.stories";
+
+<Meta title="Components/ButtonsController" />
+
+# ButtonsController Component
+
+The **ButtonsController** component allows users to select a chart type from a list of available options. This component is useful for switching between different chart visualizations (e.g., candle, bar, line, etc.), giving users flexibility in how they view the data.
+
+### Features:
+
+- **Chart Type Selection**: Users can choose from various chart types, including `candle`, `bar`, `line`, `area`, and more.
+- **Interactive UI**: The component allows the user to interactively select the chart type, with the selected option being highlighted.
+- **Customizable Chart Types**: The chart types can be easily extended or modified by passing a new list of options.
+
+## Stories
+
+### Default View
+
+This story shows the `ButtonsController` component in its default state, where the `candle` chart type is selected by default. Users can choose different chart types from the provided options.
+
+```ts
+export const Default: Story = {
+  args: {
+    selected: "candle",
+  },
+};
+```

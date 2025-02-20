@@ -1,0 +1,38 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Components/WatchlistContentTableRow" />
+
+# WatchlistContentTableRow Component
+
+The `WatchlistContentTableRow` component is used to render a row in the watchlist table. It displays key stock information for individual items in the watchlist, such as the stock name, price, change, and other relevant metrics. This component is designed to be part of a larger table structure where users can quickly view and compare their tracked stocks.
+
+## Purpose
+
+The `WatchlistContentTableRow` component is essential for displaying data about a single stock in the context of a watchlist. It ensures that each row of stock data is displayed consistently with the necessary details, making it easy for users to monitor their investments at a glance.
+
+## Setup and Requirements
+
+This component requires a `stock` prop, which is an object containing the details of a specific stock. The `stock` prop should be passed as an object with key information such as:
+
+- `shortName`
+- `symbol`
+- `regularMarketPrice`
+- `regularMarketChange`
+- `regularMarketChangePercent`
+- `regularMarketTime`
+- `currency`
+- `exchangeName`
+
+## Usage in Storybook
+
+This Storybook implementation demonstrates how the `WatchlistContentTableRow` component is used in different scenarios based on stock performance (positive or negative changes).
+
+### Stories Overview
+
+#### Positive
+
+The `Positive` story demonstrates the `WatchlistContentTableRow` component with stock data that shows a positive change in price.
+
+#### Negative
+
+The `Negative` story demonstrates the `WatchlistContentTableRow` component with stock data that shows a nagative change in price.

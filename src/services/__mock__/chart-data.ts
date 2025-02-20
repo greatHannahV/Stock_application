@@ -1,0 +1,115 @@
+const BIG_CHART_DATA_MOCK = {
+  chartData: {
+    indicators: {
+      quote: [
+        {
+          close: [2.02, 2.13, 2.15, 2.17, 2.2, 2.25, 2.28, 2.3, 2.35, 2.4],
+          high: [2.05, 2.18, 2.2, 2.22, 2.25, 2.3, 2.32, 2.35, 2.38, 2.42],
+          low: [2.0, 2.1, 2.12, 2.15, 2.18, 2.22, 2.26, 2.28, 2.3, 2.33],
+          open: [2.01, 2.12, 2.14, 2.16, 2.19, 2.24, 2.27, 2.29, 2.34, 2.38],
+          volume: [
+            2547, 14795, 18945, 12456, 9856, 15987, 13244, 15932, 12456, 17532,
+          ],
+        },
+      ],
+    },
+    meta: {
+      currency: "USD",
+      symbol: "AAPL",
+      exchangeName: "NASDAQ",
+      fullExchangeName: "NASDAQ Capital Market",
+      instrumentType: "EQUITY",
+      regularMarketPrice: 2.4,
+      previousClose: 2.35,
+      shortName: "Apple",
+    },
+    timestamp: [
+      1737037980, 1737038040, 1737038100, 1737038160, 1737038220, 1737038280,
+      1737038340, 1737038400, 1737038460, 1737038520,
+    ],
+  },
+  processedData: [
+    {
+      timestamp: 1737037980,
+      close: 2.02,
+      low: 2.0,
+      open: 2.01,
+      volume: 2547,
+      high: 2.05,
+    },
+    {
+      timestamp: 1737038040,
+      close: 2.13,
+      low: 2.1,
+      open: 2.12,
+      volume: 14795,
+      high: 2.18,
+    },
+    {
+      timestamp: 1737038100,
+      close: 2.15,
+      low: 2.12,
+      open: 2.14,
+      volume: 18945,
+      high: 2.2,
+    },
+    {
+      timestamp: 1737038160,
+      close: 2.17,
+      low: 2.15,
+      open: 2.16,
+      volume: 12456,
+      high: 2.22,
+    },
+    {
+      timestamp: 1737038220,
+      close: 2.2,
+      low: 2.18,
+      open: 2.19,
+      volume: 9856,
+      high: 2.25,
+    },
+    {
+      timestamp: 1737038280,
+      close: 2.25,
+      low: 2.22,
+      open: 2.24,
+      volume: 15987,
+      high: 2.3,
+    },
+    {
+      timestamp: 1737038340,
+      close: 2.28,
+      low: 2.26,
+      open: 2.27,
+      volume: 13244,
+      high: 2.32,
+    },
+    {
+      timestamp: 1737038400,
+      close: 2.3,
+      low: 2.28,
+      open: 2.29,
+      volume: 15932,
+      high: 2.35,
+    },
+    {
+      timestamp: 1737038460,
+      close: 2.35,
+      low: 2.3,
+      open: 2.34,
+      volume: 12456,
+      high: 2.38,
+    },
+    {
+      timestamp: 1737038520,
+      close: 2.4,
+      low: 2.33,
+      open: 2.38,
+      volume: 17532,
+      high: 2.42,
+    },
+  ],
+};
+
+export { BIG_CHART_DATA_MOCK };

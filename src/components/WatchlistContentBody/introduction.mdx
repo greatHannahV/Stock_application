@@ -1,0 +1,16 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Components/WatchlistContentBody" />
+
+# WatchlistContentBody Component
+
+The `WatchlistContentBody` component displays a list of bookmarked stocks in a table format. Each row represents a stock with details like its name, symbol, and market information. The component also includes a `DeleteButton` for removing the stock from the list.
+
+## Usage
+
+This component expects two props:
+
+- `bookedStocks`: An array of stocks to be displayed.
+- `removeBookmark`: A function to handle removing a bookmark when the delete button is clicked.
+
+In this story, we demonstrate how the `WatchlistContentBody` component renders a list of stocks and allows users to remove them by clicking the delete button. The action of clicking the delete button is captured and logged in the Storybook actions panel.

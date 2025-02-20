@@ -1,0 +1,23 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ],
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "NodeNext",
+    // "moduleResolution": "node",
+    "moduleResolution": "NodeNext",
+    "paths": {
+      "#src/services": ["./src/services"]
+    },
+
+    "strict": true,
+    "jsx": "react-jsx",
+    "types": ["vitest/globals", "vite/client", "jest", "node"],
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true
+  }
+}

@@ -1,0 +1,25 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Components/Navigation" />
+
+# Navigation Component
+
+The `Navigation` component is a key part of the application's user interface, responsible for rendering the navigation menu. It integrates with context and routing mechanisms, provided by the `withProviders` decorator.
+
+## Setup and Requirements
+
+The `Navigation` component relies on a higher-order decorator, `withProviders`, which encapsulates the necessary providers. This ensures that the component has access to context, routing, and any other global configurations.
+
+### Decorator: `withProviders`
+
+The `withProviders` decorator abstracts the following:
+
+- **React Router**: Provides routing capabilities using `BrowserRouter`.
+- **React Query**: Supplies server-state management with `QueryClientProvider`.
+- **App Context**: Shares application-level state via the `AppProvider`.
+
+The decorator eliminates the need for boilerplate code and simplifies testing and development of components.
+
+### Usage in Storybook
+
+In Storybook, the `Navigation` component is wrapped with the `withProviders` decorator to ensure all necessary contexts are available:

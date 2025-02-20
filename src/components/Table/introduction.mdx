@@ -1,0 +1,36 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Components/Table" />
+
+# Table Component
+
+The `Table` component is a flexible and dynamic table designed for displaying stock data. It supports scenarios such as showing the table in a loading state or with stock data. You can easily customize it with mock data or real-time stock data.
+
+## Setup and Requirements
+
+The `Table` component utilizes the `withProviders` decorator to ensure proper context setup and configuration in your application. This ensures that global state management and any necessary providers are applied consistently.
+
+### Decorator: `withProviders`
+
+The `withProviders` decorator is used to set up:
+
+- **Global Context**: Ensures all necessary contexts, including global state, are available.
+- **Custom Dependencies**: Configures other essential dependencies needed by the component.
+
+## Usage in Storybook
+
+This Storybook implementation showcases two primary use cases for the `Table` component:
+
+### Stories Overview
+
+#### Default
+
+The `Default` story demonstrates the `Table` component with mock stock data and without a loading state.
+
+```tsx
+export const Default = Template.bind({});
+Default.args = {
+  isLoading: false,
+  stocks: mockStocks,
+};
+```
