@@ -1,20 +1,20 @@
-import { memo } from "react";
-import Search from "../Search/Search";
+import { memo } from 'react'
+import Search from '../Search/Search'
 import {
   NavigationLink,
   NavigationList,
   NavigationStyles,
-} from "./Navigation.styles";
-import { useAppContext } from "../../AppContext";
-import Button from "../Button/Button";
+} from './Navigation.styles'
+import { useAppContext } from '../../AppContext'
+import Button from '../Button/Button'
 
-interface NavigationProps {
-  refetch: () => void;
-  isFetching: boolean;
+export interface NavigationProps {
+  refetch: () => void
+  isFetching: boolean
 }
 
 const Navigation: React.FC<NavigationProps> = ({ refetch, isFetching }) => {
-  const { isLoading } = useAppContext();
+  const { isLoading } = useAppContext()
   return (
     <NavigationStyles>
       <NavigationList>
@@ -24,7 +24,7 @@ const Navigation: React.FC<NavigationProps> = ({ refetch, isFetching }) => {
       <Search isLoading={isLoading} />
       <Button refetch={refetch} isFetching={isFetching} />
     </NavigationStyles>
-  );
-};
+  )
+}
 
-export default memo(Navigation);
+export default memo(Navigation)

@@ -1,24 +1,24 @@
-import { render, screen } from "@testing-library/react";
-import { vi } from "vitest";
-import Search from "./Search";
-import { AppProvider } from "../../AppContext";
+import { render, screen } from '@testing-library/react'
+import { vi } from 'vitest'
+import Search from './Search'
+import { AppProvider } from '../../AppContext'
 
-vi.mock("../SearchBarResult/SearchBarResult", () => ({
+vi.mock('../SearchBarResult/SearchBarResult', () => ({
   __esModule: true,
   default: () => <div data-testid="mock-searchBarResult">SearchBarResult</div>,
-}));
+}))
 
-describe("Search Component", () => {
-  it("should render components", () => {
+describe('Search Component', () => {
+  it('should render components', () => {
     render(
       <AppProvider>
-        <Search />
-      </AppProvider>
-    );
+        <Search isLoading={false} />
+      </AppProvider>,
+    )
 
-    expect(screen.getByTestId("mock-searchBarResult")).toBeInTheDocument();
+    expect(screen.getByTestId('mock-searchBarResult')).toBeInTheDocument()
 
-    const input = screen.getByTestId("search-input");
-    expect(input).toBeInTheDocument();
-  });
-});
+    const input = screen.getByTestId('search-input')
+    expect(input).toBeInTheDocument()
+  })
+})

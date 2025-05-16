@@ -1,21 +1,22 @@
-import { defineConfig } from "vitest/config";
-import react from "@vitejs/plugin-react";
+import { defineConfig } from 'vitest/config'
+import react from '@vitejs/plugin-react'
 
 export default defineConfig({
+  base: 'tradingapplication',
   plugins: [react()],
   test: {
-    environment: "jsdom",
+    environment: 'jsdom',
     globals: true,
     coverage: {
-      provider: "v8",
-      include: ["src/**/*.{ts,tsx}"],
-      exclude: ["src/components/**/*.{types,styles,test}.{ts,tsx}"],
+      provider: 'v8',
+      include: ['src/**/*.{ts,tsx}'],
+      exclude: ['src/components/**/*.{types,styles,test}.{ts,tsx}'],
     },
-    setupFiles: ["./vitest.setup.ts"],
+    setupFiles: ['./vitest.setup.ts'],
   },
   resolve: {
     alias: {
-      "#services": "./src/services",
+      '#services': './src/services',
     },
   },
-});
+})

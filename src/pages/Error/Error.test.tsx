@@ -1,38 +1,38 @@
-import { render, screen } from "@testing-library/react";
-import { MemoryRouter, Route, Routes } from "react-router-dom";
-import "@testing-library/jest-dom";
-import { describe, expect, it, vi } from "vitest";
-import userEvent from "@testing-library/user-event";
-import Error from "./Error";
+import { render, screen } from '@testing-library/react'
+import { MemoryRouter, Route, Routes } from 'react-router-dom'
+import '@testing-library/jest-dom'
+import { describe, it, vi } from 'vitest'
+import userEvent from '@testing-library/user-event'
+import Error from './Error'
 
-describe("Error should be shown", () => {
-  it("should call navigate on Back button click", async () => {
+describe('Error should be shown', () => {
+  it('should call navigate on Back button click', async () => {
     render(
       <MemoryRouter>
         <Error />
-      </MemoryRouter>
-    );
+      </MemoryRouter>,
+    )
 
-    const backButton = screen.getByText("Back");
+    const backButton = screen.getByText('Back')
 
-    const clickSpy = vi.fn();
+    const clickSpy = vi.fn()
 
-    backButton.addEventListener("click", clickSpy);
+    backButton.addEventListener('click', clickSpy)
 
-    await userEvent.click(backButton);
+    await userEvent.click(backButton)
 
-    expect(clickSpy).toHaveBeenCalled();
-  });
-  it("renders error message when there is an error ", () => {
+    expect(clickSpy).toHaveBeenCalled()
+  })
+  it('renders error message when there is an error ', () => {
     render(
-      <MemoryRouter initialEntries={["/error"]}>
+      <MemoryRouter initialEntries={['/error']}>
         <Routes>
           <Route path="/error" element={<Error />} />
         </Routes>
-      </MemoryRouter>
-    );
+      </MemoryRouter>,
+    )
 
-    const errorMessage = screen.getByText("Something went wrong.");
-    expect(errorMessage).toBeInTheDocument();
-  });
-});
+    const errorMessage = screen.getByText('Something went wrong.')
+    expect(errorMessage).toBeInTheDocument()
+  })
+})

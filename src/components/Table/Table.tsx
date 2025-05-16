@@ -1,22 +1,22 @@
-import React, { memo, useMemo } from "react";
-import { updateMainTable } from "../../utils/updateMainTable.ts";
+import React, { memo, useMemo } from 'react'
+import { updateMainTable } from '../../utils/updateMainTable.ts'
 import {
   HeaderStyled,
   MainTableContainerStyled,
   TableCellStyled,
   TableRowStyled,
-} from "./Table.styles.ts";
-import TableHeader from "../TableHeader/TableHeader.tsx";
-import SkeletonTable from "../skeletons/SkeletonTable/SkeletonTable.tsx";
-import SkeletonMainTableHeader from "../skeletons/SkeletonMainTableHeader/SkeletonMainTableHeader.tsx";
-import { TableProps } from "./Table.types.ts";
-import { getTextColorForTable, getValue, tableHeaders } from "./Table.util.ts";
+} from './Table.styles.ts'
+import TableHeader from '../TableHeader/TableHeader.tsx'
+import SkeletonTable from '../skeletons/SkeletonTable/SkeletonTable.tsx'
+import SkeletonMainTableHeader from '../skeletons/SkeletonMainTableHeader/SkeletonMainTableHeader.tsx'
+import { TableProps } from './Table.types.ts'
+import { getTextColorForTable, getValue, tableHeaders } from './Table.util.ts'
 
 const Table: React.FC<TableProps> = ({ stocks, isLoading }) => {
   const formattedData = useMemo(() => {
-    if (!Array.isArray(stocks) || !stocks.length) return [];
-    return updateMainTable(stocks, tableHeaders);
-  }, [stocks]);
+    if (!Array.isArray(stocks) || !stocks.length) return []
+    return updateMainTable(stocks, tableHeaders)
+  }, [stocks])
 
   if (isLoading) {
     return (
@@ -26,7 +26,7 @@ const Table: React.FC<TableProps> = ({ stocks, isLoading }) => {
           <SkeletonTable key={index} />
         ))}
       </>
-    );
+    )
   }
   return (
     <MainTableContainerStyled aria-labelledby="tableTitle">
@@ -37,29 +37,31 @@ const Table: React.FC<TableProps> = ({ stocks, isLoading }) => {
         {formattedData.map((stock, i) => (
           <TableRowStyled key={i} role="row">
             {Object.keys(tableHeaders).map((key) => {
-              if (key === "symbol") {
-                return null;
+              if (key === 'symbol') {
+                return null
               }
-              const value = getValue(key, stock);
-
+              const value = getValue(key, stock)
+              if (typeof value !== 'string' && typeof value !== 'number') {
+                return null
+              }
               return (
                 <TableCellStyled
                   to={`/chart/${stock.symbol}`}
                   key={key}
                   $textColor={getTextColorForTable(key, value)}
-                  $bold={key === "shortName"}
-                  $first={key === "shortName"}
-                  $last={key === "regularMarketChange"}
+                  $bold={key === 'shortName'}
+                  $first={key === 'shortName'}
+                  $last={key === 'regularMarketChange'}
                 >
                   {value}
                 </TableCellStyled>
-              );
+              )
             })}
           </TableRowStyled>
         ))}
       </div>
     </MainTableContainerStyled>
-  );
-};
+  )
+}
 
-export default memo(Table);
+export default memo(Table)

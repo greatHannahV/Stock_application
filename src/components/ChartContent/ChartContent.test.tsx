@@ -1,7 +1,7 @@
-import { render, screen } from "@testing-library/react";
-import { expect, it } from "vitest";
-import ChartContent from "./ChartContent";
-import "@testing-library/jest-dom";
+import { render, screen } from '@testing-library/react'
+import { it } from 'vitest'
+import ChartContent from './ChartContent'
+import '@testing-library/jest-dom'
 
 export const mockAppleChartData = {
   chartData: {
@@ -27,12 +27,12 @@ export const mockAppleChartData = {
       ],
     },
     meta: {
-      currency: "USD",
-      symbol: "AAPL",
-      exchangeName: "NASDAQ",
-      fullExchangeName: "NASDAQ Stock Market",
-      instrumentType: "EQUITY",
-      shortName: "Apple Inc.",
+      currency: 'USD',
+      symbol: 'AAPL',
+      exchangeName: 'NASDAQ',
+      fullExchangeName: 'NASDAQ Stock Market',
+      instrumentType: 'EQUITY',
+      shortName: 'Apple Inc.',
       regularMarketPrice: 175,
       previousClose: 170,
     },
@@ -50,10 +50,10 @@ export const mockAppleChartData = {
       volume: 5000000 + index * 20000,
       high: 175 + index * 0.2,
     })),
-};
+}
 
-it("ChartContent component renders correctly", () => {
-  render(<ChartContent selectedCompany={mockAppleChartData} />);
-  const shortName = screen.getByText("Apple Inc.");
-  expect(shortName).toBeInTheDocument();
-});
+it('ChartContent component renders correctly', () => {
+  render(<ChartContent selectedCompany={mockAppleChartData} />)
+  const shortName = screen.getByText('Apple Inc.')
+  expect(shortName).toBeInTheDocument()
+})

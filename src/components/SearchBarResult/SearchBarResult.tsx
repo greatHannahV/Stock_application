@@ -7,20 +7,20 @@ import {
   StockSymbol,
   SearchBarButton,
   ShortName,
-} from "./SearchBarResult.style";
-import { IoBookmarkOutline, IoBookmark } from "react-icons/io5";
-import { getTextColorForTable } from "../Table/Table.util";
-import { useEffect, useRef, memo } from "react";
-import { Meta } from "../../services/StockServices.types";
-import { useBookmarks } from "../../hooks/useBookmarks";
-import { useToggle } from "../../hooks/useToggle";
+} from './SearchBarResult.style'
+import { IoBookmarkOutline, IoBookmark } from 'react-icons/io5'
+import { getTextColorForTable } from '../Table/Table.util'
+import { useEffect, useRef, memo } from 'react'
+import { Meta } from '../../services/StockServices.types'
+import { useBookmarks } from '../../hooks/useBookmarks'
+import { useToggle } from '../../hooks/useToggle'
 
 type SearchBarResultProps = {
-  search: string;
-  stocks: Meta[];
-  bookedStocks: Meta[];
-  onSearch: (value: string) => void;
-};
+  search: string
+  stocks: Meta[]
+  bookedStocks: Meta[]
+  onSearch: (value: string) => void
+}
 
 function SearchBarResult({
   search,
@@ -28,16 +28,15 @@ function SearchBarResult({
   bookedStocks,
   onSearch,
 }: SearchBarResultProps) {
-  const { addBookmark, removeBookmark } = useBookmarks();
-  const [modal, toggleModal, setModal] = useToggle();
-
-  const searchResultRef = useRef<HTMLDivElement | null>(null);
+  const { addBookmark, removeBookmark } = useBookmarks()
+  const [modal, , setModal] = useToggle()
+  const searchResultRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     if (bookedStocks.length > 0) {
-      localStorage.setItem("bookedStocks", JSON.stringify(bookedStocks));
+      localStorage.setItem('bookedStocks', JSON.stringify(bookedStocks))
     }
-  }, [bookedStocks]);
+  }, [bookedStocks])
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -45,51 +44,51 @@ function SearchBarResult({
         searchResultRef.current &&
         !searchResultRef.current.contains(event.target as Node)
       ) {
-        setModal(false);
-        onSearch("");
+        setModal(false)
+        onSearch('')
       }
-    };
+    }
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
   const handleBookmarkToggle = (stock: Meta) => {
     if (bookedStocks.some((s) => s.shortName === stock.shortName)) {
-      removeBookmark(stock);
+      removeBookmark(stock)
     } else {
-      addBookmark(stock);
+      addBookmark(stock)
     }
-  };
+  }
 
-  const hasMatchingStocks = search.trim().length > 0;
+  const hasMatchingStocks = search.trim().length > 0
 
   useEffect(() => {
-    setModal(search.trim().length > 0);
-  }, [search]);
+    setModal(search.trim().length > 0)
+  }, [search])
 
   const filteredStocks = stocks.filter(
     (stock) =>
       stock.shortName &&
-      stock.shortName.toLowerCase().includes(search.toLowerCase())
-  );
+      stock.shortName.toLowerCase().includes(search.toLowerCase()),
+  )
 
-  const isNoMatchingStockFound = filteredStocks.length === 0;
+  const isNoMatchingStockFound = filteredStocks.length === 0
 
   // If there are no matching stocks and search term is not empty, show the error message
-  if (!hasMatchingStocks) return null;
+  if (!hasMatchingStocks) return null
 
   return (
     <SearchBarResultStyle ref={searchResultRef}>
-      <SearchBarButton data-testid="clear-button" onClick={() => onSearch("")}>
+      <SearchBarButton data-testid="clear-button" onClick={() => onSearch('')}>
         Clear search
       </SearchBarButton>
 
       {modal && stocks.length > 0 && filteredStocks.length > 0
         ? filteredStocks.map((stock) => {
             const isBookmarked = bookedStocks.some(
-              (s) => s.shortName === stock.shortName
-            );
+              (s) => s.shortName === stock.shortName,
+            )
 
             return (
               <ResultStyle key={stock.symbol}>
@@ -101,8 +100,8 @@ function SearchBarResult({
                   <StockSymbol>{stock.symbol}</StockSymbol>
                   <RightContent
                     $textColor={getTextColorForTable(
-                      "regularMarketChangePercent",
-                      stock.regularMarketChangePercent
+                      'regularMarketChangePercent',
+                      stock.regularMarketChangePercent,
                     )}
                   >
                     {stock.regularMarketChangePercent?.toFixed(2)}
@@ -119,15 +118,15 @@ function SearchBarResult({
                   )}
                 </Button>
               </ResultStyle>
-            );
+            )
           })
         : isNoMatchingStockFound && (
-            <SearchBarResultStyle style={{ color: "red", padding: "1rem" }}>
+            <SearchBarResultStyle style={{ color: 'red', padding: '1rem' }}>
               No matching stocks found for "{search}"
             </SearchBarResultStyle>
           )}
     </SearchBarResultStyle>
-  );
+  )
 }
 
-export default memo(SearchBarResult);
+export default memo(SearchBarResult)
