@@ -10,7 +10,7 @@ import {
 import Table from '../../components/Table/Table.tsx'
 import { useQuery } from '@tanstack/react-query'
 import Error from '../../components/Error/Error.tsx'
-import { getStocksData } from '#src/services'
+import { getStocksData } from '#src/services/StockServices'
 
 import { FC } from 'react'
 import Navigation from '../../components/Navigation/Navigation.tsx'
