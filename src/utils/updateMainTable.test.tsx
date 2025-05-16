@@ -1,120 +1,136 @@
-import { describe, it } from "vitest";
-import { Meta } from "../services/StockServices.types";
-import { updateMainTable } from "./updateMainTable";
+import { describe, it } from 'vitest'
+import { Meta } from '../services/StockServices.types'
+import { updateMainTable } from './updateMainTable'
 
-describe("updateMainTable", () => {
+describe('updateMainTable', () => {
   const tableHeaders: Record<string, string> = {
-    symbol: "Symbol",
-    shortName: "Short Name",
-    regularMarketChange: "Change",
-    regularMarketChangePercent: "Change Percent",
-  };
+    symbol: 'Symbol',
+    shortName: 'Short Name',
+    regularMarketChange: 'Change',
+    regularMarketChangePercent: 'Change Percent',
+  }
 
   const mockStockData: Meta[] = [
     {
-      symbol: "AAPL",
-      shortName: "Apple Inc.",
+      symbol: 'AAPL',
+      shortName: 'Apple Inc.',
       regularMarketChange: 1.23,
       regularMarketChangePercent: 2.34,
+      regularMarketPrice: 150.5,
+      previousClose: 149.27,
+      regularMarketTime: 1700000000,
+      timestamp: [1700000000, 1700003600],
+      currency: 'USD',
+      exchangeName: 'NasdaqGS',
+      fullExchangeName: 'Nasdaq Global Select',
+      instrumentType: 'EQUITY',
     },
     {
-      symbol: "MSFT",
-      shortName: "Microsoft Corp.",
+      symbol: 'MSFT',
+      shortName: 'Microsoft Corp.',
       regularMarketChange: -0.45,
       regularMarketChangePercent: -0.56,
+      regularMarketPrice: 298.3,
+      previousClose: 299.75,
+      regularMarketTime: 1700000000,
+      timestamp: [1700000000, 1700003600],
+      currency: 'USD',
+      exchangeName: 'NasdaqGS',
+      fullExchangeName: 'Nasdaq Global Select',
+      instrumentType: 'EQUITY',
     },
-  ];
+  ]
 
-  it("should return the formatted table data with specified headers", () => {
-    const result = updateMainTable(mockStockData, tableHeaders);
+  it('should return the formatted table data with specified headers', () => {
+    const result = updateMainTable(mockStockData, tableHeaders)
     const expectedData = [
       {
-        symbol: "AAPL",
-        shortName: "Apple Inc.",
+        symbol: 'AAPL',
+        shortName: 'Apple Inc.',
         regularMarketChange: 1.23,
         regularMarketChangePercent: 2.34,
       },
       {
-        symbol: "MSFT",
-        shortName: "Microsoft Corp.",
+        symbol: 'MSFT',
+        shortName: 'Microsoft Corp.',
         regularMarketChange: -0.45,
         regularMarketChangePercent: -0.56,
       },
-    ];
+    ]
 
-    expect(result).toHaveLength(expectedData.length);
+    expect(result).toHaveLength(expectedData.length)
     result.forEach((item, index) => {
-      expect(item).toEqual(expectedData[index]);
-    });
-  });
+      expect(item).toEqual(expectedData[index])
+    })
+  })
 
-  it("should handle an empty stock data array", () => {
-    const result = updateMainTable([], tableHeaders);
+  it('should handle an empty stock data array', () => {
+    const result = updateMainTable([], tableHeaders)
 
-    expect(result).toHaveLength(0);
-  });
+    expect(result).toHaveLength(0)
+  })
 
-  it("should return data with only specified headers", () => {
+  it('should return data with only specified headers', () => {
     const partialHeaders: Record<string, string> = {
-      symbol: "Symbol",
-      shortName: "Short Name",
-    };
+      symbol: 'Symbol',
+      shortName: 'Short Name',
+    }
 
-    const result = updateMainTable(mockStockData, partialHeaders);
+    const result = updateMainTable(mockStockData, partialHeaders)
     const expectedData = [
       {
-        symbol: "AAPL",
-        shortName: "Apple Inc.",
+        symbol: 'AAPL',
+        shortName: 'Apple Inc.',
         regularMarketChange: 1.23,
         regularMarketChangePercent: 2.34,
       },
       {
-        symbol: "MSFT",
-        shortName: "Microsoft Corp.",
+        symbol: 'MSFT',
+        shortName: 'Microsoft Corp.',
         regularMarketChange: -0.45,
         regularMarketChangePercent: -0.56,
       },
-    ];
+    ]
 
-    expect(result).toHaveLength(expectedData.length);
+    expect(result).toHaveLength(expectedData.length)
     result.forEach((item, index) => {
-      expect(item).toEqual(expectedData[index]);
-    });
-  });
+      expect(item).toEqual(expectedData[index])
+    })
+  })
 
-  it("should handle non-existent headers gracefully", () => {
+  it('should handle non-existent headers gracefully', () => {
     const invalidHeaders: Record<string, string> = {
-      nonExistentField: "Non Existent Field",
-    };
+      nonExistentField: 'Non Existent Field',
+    }
 
-    const result = updateMainTable(mockStockData, invalidHeaders);
+    const result = updateMainTable(mockStockData, invalidHeaders)
 
-    expect(result).toHaveLength(mockStockData.length);
+    expect(result).toHaveLength(mockStockData.length)
     result.forEach((item, index) => {
-      expect(item).toEqual(mockStockData[index]);
-    });
-  });
+      expect(item).toEqual(mockStockData[index])
+    })
+  })
 
-  it("should handle mixed valid and invalid headers", () => {
+  it('should handle mixed valid and invalid headers', () => {
     const mixedHeaders: Record<string, string> = {
-      symbol: "Symbol",
-      nonExistentField: "Non Existent Field",
-    };
+      symbol: 'Symbol',
+      nonExistentField: 'Non Existent Field',
+    }
 
-    const result = updateMainTable(mockStockData, mixedHeaders);
+    const result = updateMainTable(mockStockData, mixedHeaders)
     const expectedData = [
       {
-        symbol: "AAPL",
+        symbol: 'AAPL',
       },
       {
-        symbol: "MSFT",
+        symbol: 'MSFT',
       },
-    ];
+    ]
 
-    expect(result).toHaveLength(expectedData.length);
+    expect(result).toHaveLength(expectedData.length)
     result.forEach((item, index) => {
-      expect(item.symbol).toEqual(expectedData[index].symbol);
-      expect(item).not.toHaveProperty("nonExistentField");
-    });
-  });
-});
+      expect(item.symbol).toEqual(expectedData[index].symbol)
+      expect(item).not.toHaveProperty('nonExistentField')
+    })
+  })
+})

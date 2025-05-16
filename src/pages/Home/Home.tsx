@@ -1,4 +1,4 @@
-import BiggestTables from "../../components/BiggestTables/BiggestTables.tsx";
+import BiggestTables from '../../components/BiggestTables/BiggestTables.tsx'
 import {
   BiggestTableBoxes,
   BiggestTableWrapper,
@@ -6,16 +6,14 @@ import {
   HomeWrapper,
   MainTableBox,
   SectionHeading,
-} from "./Home.styles.ts";
-import Table from "../../components/Table/Table.tsx";
-import { useQuery } from "@tanstack/react-query";
-import Error from "../../components/Error/Error.tsx";
-// import { getStocksData } from "../../services/StockServices.ts";
-import { getStocksData } from "#src/services";
+} from './Home.styles.ts'
+import Table from '../../components/Table/Table.tsx'
+import { useQuery } from '@tanstack/react-query'
+import Error from '../../components/Error/Error.tsx'
+import { getStocksData } from '#src/services'
 
-import Button from "../../components/Button/Button.tsx";
-import { FC } from "react";
-import Navigation from "../../components/Navigation/Navigation.tsx";
+import { FC } from 'react'
+import Navigation from '../../components/Navigation/Navigation.tsx'
 
 const Home: FC = () => {
   const {
@@ -25,14 +23,14 @@ const Home: FC = () => {
     refetch,
     isFetching,
   } = useQuery({
-    queryKey: ["stocks"],
+    queryKey: ['stocks'],
     queryFn: getStocksData,
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
-  });
+  })
 
   if (error) {
-    return <Error error={error} />;
+    return <Error error={error} />
   }
   return (
     <HomeStyles>
@@ -51,7 +49,7 @@ const Home: FC = () => {
         </BiggestTableWrapper>
       </HomeWrapper>
     </HomeStyles>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

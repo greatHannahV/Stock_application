@@ -1,6 +1,6 @@
-import { Company } from "../../utils/getBiggestGainersAndLosers";
+import { Company } from '../../utils/getBiggestGainersAndLosers'
 
 export interface BiggestTablesProps {
-  isLoading: boolean;
-  stocks: Company[];
+  isLoading: boolean
+  stocks: Company[]
 }
